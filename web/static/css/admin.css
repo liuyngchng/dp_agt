@@ -477,6 +477,18 @@ header p {
     -webkit-overflow-scrolling: touch;
 }
 
+/* 任务监控 & 任务审查：表格区域固定高度，使下方分页栏位置恒定。
+   用 height（而非 min-height）——分页栏位置只由布局决定，
+   与数据行数、行高（展开详情行、缩放、字体）完全无关；
+   表格内容超高时在区域内滚动，分页栏不动。
+   高度 ≈ 表头 40px + 10 行 × ≈49px ≈ 530px，取 36rem 留余量。
+   此数值只影响空页/短页保留的空白多少，不影响分页栏稳定性。 */
+#section-tasks .table-scroll,
+#section-audit .table-scroll {
+    height: 36rem;
+    overflow-y: auto;
+}
+
 .result-table {
     width: 100%;
     border-collapse: collapse;

@@ -137,8 +137,7 @@
 <!-- ========== 任务审查 ========== -->
                 <div class="cfg-section" id="section-audit">
                     <h2><i class="fas fa-search"></i> 任务审查</h2>
-                    <p style="color:#888;margin-bottom:16px;">按 Task ID 或 Link ID 查询智能体完整工作过程。</p>
-
+                    
                     <div style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;align-items:flex-end;">
                         <div class="form-g" style="margin-bottom:0;flex:1;min-width:220px;">
                             <label>Task ID</label>
@@ -457,12 +456,6 @@ function renderTasksPage(list) {
             </td>
         </tr>`;
     }).join('');
-    // 不满 10 行时补空行，保持分页栏位置固定（多补一行作为缓冲）
-    if (list.length < TASKS_PAGE_SIZE) {
-        for (let i = list.length; i <= TASKS_PAGE_SIZE; i++) {
-            tbody.innerHTML += '<tr style="visibility:hidden;"><td class="col-seq">&nbsp;</td><td class="col-title">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="col-date">&nbsp;</td><td class="col-date">&nbsp;</td><td class="col-action">&nbsp;</td></tr>';
-        }
-    }
     document.getElementById('tasksPager').innerHTML = pagerHtml(_tasksPage, totalPages, 'loadTasks');
 }
 
@@ -925,12 +918,6 @@ function renderAuditPage(list) {
             </td>
         </tr>`;
     }).join('');
-    // 不满 10 行时补空行，保持分页栏位置固定（多补一行作为缓冲）
-    if (list.length < AUDIT_PAGE_SIZE) {
-        for (let i = list.length; i <= AUDIT_PAGE_SIZE; i++) {
-            tbody.innerHTML += '<tr style="visibility:hidden;"><td class="col-seq">&nbsp;</td><td class="col-title">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="col-date">&nbsp;</td><td class="col-action">&nbsp;</td></tr>';
-        }
-    }
     document.getElementById('auditPager').innerHTML = pagerHtml(_auditPage, totalPages, 'loadAudit', _auditMode);
 }
 
